@@ -1,9 +1,6 @@
 package comparation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Test2 {
     public static void main(String[] args) {
@@ -15,11 +12,8 @@ public class Test2 {
         list.add(emp2);
         list.add(emp3);
         System.out.println("Before sorting " + list + "\n");
-        Collections.sort(list);
-        //Arrays.sort(new Employee[] {emp1, emp2, emp3});
+        Collections.sort(list, new SalaryComparator());
         System.out.println("After sorting " + list + "\n");
-
-
     }
 }
 
@@ -49,5 +43,19 @@ class Employee implements Comparable<Employee> {
     @Override
     public int compareTo(Employee anotherEmp) {
         return this.id - anotherEmp.id;
+    }
+}
+
+class NameComparator  implements Comparator<Employee> {
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.name.compareTo(emp2.name);
+    }
+}
+
+class SalaryComparator  implements Comparator<Employee> {
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        return emp1.salary - emp2.salary;
     }
 }
