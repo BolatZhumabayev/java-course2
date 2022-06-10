@@ -42,18 +42,24 @@ class Employee implements Comparable<Employee> {
 
     @Override
     public int compareTo(Employee anotherEmp) {
-        return this.id - anotherEmp.id;
+        if (this.id == anotherEmp.id) {
+            return 0;
+        } else if (this.id < anotherEmp.id) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }
 
-class NameComparator  implements Comparator<Employee> {
+class NameComparator implements Comparator<Employee> {
     @Override
     public int compare(Employee emp1, Employee emp2) {
         return emp1.name.compareTo(emp2.name);
     }
 }
 
-class SalaryComparator  implements Comparator<Employee> {
+class SalaryComparator implements Comparator<Employee> {
     @Override
     public int compare(Employee emp1, Employee emp2) {
         return emp1.salary - emp2.salary;
